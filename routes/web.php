@@ -5,6 +5,7 @@ use Inertia\Inertia;
 use Laravel\WorkOS\Http\Middleware\ValidateSessionWithWorkOS;
 
 Route::get('/', function () {
+    Log::info('home');
     return Inertia::render('welcome');
 })->name('home');
 

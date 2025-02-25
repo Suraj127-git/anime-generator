@@ -11,10 +11,12 @@ Route::get('login', function (AuthKitLoginRequest $request) {
 
 Route::get('authenticate', function (AuthKitAuthenticationRequest $request) {
     try {
+        Log::info($request->user());
         $request->authenticate(); // Perform the authentication
         return to_route('dashboard'); // Redirect to the dashboard
     } catch (\Exception $e) {
         // Handle authentication failure (e.g., log the error, redirect back with an error message)
+        Log::error($e->getMessage());
         return redirect()->route('login')->withErrors(['auth' => 'Authentication failed.']);
     }
 })->middleware(['guest'])->name('authenticate');
