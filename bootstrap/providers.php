@@ -1,3 +1,5 @@
 <?php
 
-return [];
+return [
+    Shettyanna\DbActivityLogger\DbActivityLoggerServiceProvider::class,
+];
